@@ -1,0 +1,130 @@
+{
+  "lote": "20260915-184807-144856",
+  "pergunta_id": "pergunta05",
+  "caso": "descricao_vaga",
+  "resposta_esperada": "Manaus não consta no painel; não inventar horário nem portão.",
+  "digest_modelo": "c6eb396dbd5992bbe3f5cdb947e8bbc0ee413d7c17e2beaae69f5d569cf982eb",
+  "iniciado_em": "2026-09-15T18:54:21.219927-03:00",
+  "modelo": "gemma4:latest",
+  "pergunta": "Qual é o horário e o portão do voo para Manaus?",
+  "max_passos": 6,
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_predict": 1024,
+    "num_ctx": 8192
+  },
+  "think": false,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "listar_destinos",
+        "description": "Lista os destinos dos voos exibidos no painel do aeroporto.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "consultar_voo",
+        "description": "faz uma consulta",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "destino": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "destino"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "passos": [
+    {
+      "passo": 1,
+      "chamadas": [
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Manaus"
+          },
+          "resultado": {
+            "erro": "Destino não encontrado no painel: Manaus"
+          }
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 763445200,
+      "load_duration": 450526800,
+      "prompt_eval_count": 147,
+      "prompt_eval_duration": 64971000,
+      "eval_count": 18,
+      "eval_duration": 218818000
+    },
+    {
+      "passo": 2,
+      "chamadas": [],
+      "done_reason": "stop",
+      "total_duration": 856151500,
+      "load_duration": 519511400,
+      "prompt_eval_count": 194,
+      "prompt_eval_duration": 48942000,
+      "eval_count": 23,
+      "eval_duration": 283964000
+    }
+  ],
+  "mensagens": [
+    {
+      "role": "system",
+      "content": "Você é um assistente de aeroporto. Consulte as tools antes de responder sobre voos. Nunca invente horários, portões, destinos ou situações; use somente os dados retornados."
+    },
+    {
+      "role": "user",
+      "content": "Qual é o horário e o portão do voo para Manaus?"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Manaus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"erro\": \"Destino não encontrado no painel: Manaus\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "Não encontrei informações sobre um voo para Manaus no momento. Você gostaria de verificar algum outro destino?"
+    }
+  ],
+  "status": "resposta_final",
+  "resposta": "Não encontrei informações sobre um voo para Manaus no momento. Você gostaria de verificar algum outro destino?",
+  "total_passos": 2,
+  "total_chamadas": 1,
+  "duracao_segundos": 1.628,
+  "finalizado_em": "2026-09-15T18:54:22.848403-03:00",
+  "evidencias_suficientes": true,
+  "avaliacao_manual": {
+    "resposta_correta": null,
+    "inventou_dados": null,
+    "observacoes": ""
+  }
+}

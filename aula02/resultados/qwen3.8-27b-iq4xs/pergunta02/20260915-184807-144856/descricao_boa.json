@@ -1,0 +1,129 @@
+{
+  "lote": "20260915-184807-144856",
+  "pergunta_id": "pergunta02",
+  "caso": "descricao_boa",
+  "resposta_esperada": "Recife, Salvador, Curitiba e Fortaleza.",
+  "digest_modelo": "3eb1e9cf27b5edeeb3d000a8c9284075a14fa5b4ff31e16195a573ca2d4daa7a",
+  "iniciado_em": "2026-09-15T18:49:12.705370-03:00",
+  "modelo": "qwen3.8:27b-iq4xs",
+  "pergunta": "Quais destinos aparecem no painel de voos?",
+  "max_passos": 6,
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_predict": 1024,
+    "num_ctx": 8192
+  },
+  "think": false,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "listar_destinos",
+        "description": "Lista os destinos dos voos exibidos no painel do aeroporto.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "consultar_voo",
+        "description": "Retorna horário programado, portão e situação do voo para o destino informado.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "destino": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "destino"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "passos": [
+    {
+      "passo": 1,
+      "chamadas": [
+        {
+          "nome": "listar_destinos",
+          "argumentos": {},
+          "resultado": [
+            "Recife",
+            "Salvador",
+            "Curitiba",
+            "Fortaleza"
+          ]
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 3664551100,
+      "load_duration": 258198000,
+      "prompt_eval_count": 384,
+      "prompt_eval_duration": 529667000,
+      "eval_count": 16,
+      "eval_duration": 2573442000
+    },
+    {
+      "passo": 2,
+      "chamadas": [],
+      "done_reason": "stop",
+      "total_duration": 4945241100,
+      "load_duration": 251345800,
+      "prompt_eval_count": 434,
+      "prompt_eval_duration": 686564000,
+      "eval_count": 24,
+      "eval_duration": 3955204000
+    }
+  ],
+  "mensagens": [
+    {
+      "role": "system",
+      "content": "Você é um assistente de aeroporto. Consulte as tools antes de responder sobre voos. Nunca invente horários, portões, destinos ou situações; use somente os dados retornados."
+    },
+    {
+      "role": "user",
+      "content": "Quais destinos aparecem no painel de voos?"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "listar_destinos",
+            "arguments": {}
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "listar_destinos",
+      "content": "[\"Recife\", \"Salvador\", \"Curitiba\", \"Fortaleza\"]"
+    },
+    {
+      "role": "assistant",
+      "content": "Os destinos exibidos no painel de voos são:\n\n- Recife\n- Salvador\n- Curitiba\n- Fortaleza"
+    }
+  ],
+  "status": "resposta_final",
+  "resposta": "Os destinos exibidos no painel de voos são:\n\n- Recife\n- Salvador\n- Curitiba\n- Fortaleza",
+  "total_passos": 2,
+  "total_chamadas": 1,
+  "duracao_segundos": 8.617,
+  "finalizado_em": "2026-09-15T18:49:21.322483-03:00",
+  "evidencias_suficientes": true,
+  "avaliacao_manual": {
+    "resposta_correta": null,
+    "inventou_dados": null,
+    "observacoes": ""
+  }
+}

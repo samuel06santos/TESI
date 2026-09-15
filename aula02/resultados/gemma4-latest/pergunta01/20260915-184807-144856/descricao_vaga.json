@@ -1,0 +1,132 @@
+{
+  "lote": "20260915-184807-144856",
+  "pergunta_id": "pergunta01",
+  "caso": "descricao_vaga",
+  "resposta_esperada": "Recife: 14:20, portão A12, no horário.",
+  "digest_modelo": "c6eb396dbd5992bbe3f5cdb947e8bbc0ee413d7c17e2beaae69f5d569cf982eb",
+  "iniciado_em": "2026-09-15T18:54:10.202041-03:00",
+  "modelo": "gemma4:latest",
+  "pergunta": "Qual é o horário, o portão e a situação do voo para Recife?",
+  "max_passos": 6,
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_predict": 1024,
+    "num_ctx": 8192
+  },
+  "think": false,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "listar_destinos",
+        "description": "Lista os destinos dos voos exibidos no painel do aeroporto.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "consultar_voo",
+        "description": "faz uma consulta",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "destino": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "destino"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "passos": [
+    {
+      "passo": 1,
+      "chamadas": [
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Recife"
+          },
+          "resultado": {
+            "horario": "14:20",
+            "portao": "A12",
+            "situacao": "No horário"
+          }
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 755594400,
+      "load_duration": 445823200,
+      "prompt_eval_count": 149,
+      "prompt_eval_duration": 66429000,
+      "eval_count": 18,
+      "eval_duration": 220640000
+    },
+    {
+      "passo": 2,
+      "chamadas": [],
+      "done_reason": "stop",
+      "total_duration": 870541100,
+      "load_duration": 416414500,
+      "prompt_eval_count": 209,
+      "prompt_eval_duration": 51932000,
+      "eval_count": 33,
+      "eval_duration": 397861000
+    }
+  ],
+  "mensagens": [
+    {
+      "role": "system",
+      "content": "Você é um assistente de aeroporto. Consulte as tools antes de responder sobre voos. Nunca invente horários, portões, destinos ou situações; use somente os dados retornados."
+    },
+    {
+      "role": "user",
+      "content": "Qual é o horário, o portão e a situação do voo para Recife?"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Recife"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"horario\": \"14:20\", \"portao\": \"A12\", \"situacao\": \"No horário\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "O voo para Recife está previsto para as **14:20**, no portão **A12** e a situação é **No horário**."
+    }
+  ],
+  "status": "resposta_final",
+  "resposta": "O voo para Recife está previsto para as **14:20**, no portão **A12** e a situação é **No horário**.",
+  "total_passos": 2,
+  "total_chamadas": 1,
+  "duracao_segundos": 1.634,
+  "finalizado_em": "2026-09-15T18:54:11.835621-03:00",
+  "evidencias_suficientes": true,
+  "avaliacao_manual": {
+    "resposta_correta": null,
+    "inventou_dados": null,
+    "observacoes": ""
+  }
+}

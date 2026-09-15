@@ -1,0 +1,243 @@
+{
+  "lote": "20260915-184807-144856",
+  "pergunta_id": "pergunta03",
+  "caso": "descricao_boa",
+  "resposta_esperada": "Salvador, às 13:50, portão B03, atrasado.",
+  "digest_modelo": "3eb1e9cf27b5edeeb3d000a8c9284075a14fa5b4ff31e16195a573ca2d4daa7a",
+  "iniciado_em": "2026-09-15T18:49:30.025230-03:00",
+  "modelo": "qwen3.8:27b-iq4xs",
+  "pergunta": "Qual voo tem o horário programado mais cedo?",
+  "max_passos": 6,
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_predict": 1024,
+    "num_ctx": 8192
+  },
+  "think": false,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "listar_destinos",
+        "description": "Lista os destinos dos voos exibidos no painel do aeroporto.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "consultar_voo",
+        "description": "Retorna horário programado, portão e situação do voo para o destino informado.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "destino": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "destino"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "passos": [
+    {
+      "passo": 1,
+      "chamadas": [
+        {
+          "nome": "listar_destinos",
+          "argumentos": {},
+          "resultado": [
+            "Recife",
+            "Salvador",
+            "Curitiba",
+            "Fortaleza"
+          ]
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 7996753300,
+      "load_duration": 246277500,
+      "prompt_eval_count": 384,
+      "prompt_eval_duration": 510168000,
+      "eval_count": 42,
+      "eval_duration": 7006014000
+    },
+    {
+      "passo": 2,
+      "chamadas": [
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Recife"
+          },
+          "resultado": {
+            "horario": "14:20",
+            "portao": "A12",
+            "situacao": "No horário"
+          }
+        },
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Salvador"
+          },
+          "resultado": {
+            "horario": "13:50",
+            "portao": "B03",
+            "situacao": "Atrasado"
+          }
+        },
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Curitiba"
+          },
+          "resultado": {
+            "horario": "15:10",
+            "portao": "C07",
+            "situacao": "Embarque"
+          }
+        },
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Fortaleza"
+          },
+          "resultado": {
+            "horario": "16:40",
+            "portao": "A08",
+            "situacao": "Cancelado"
+          }
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 25744965400,
+      "load_duration": 334505500,
+      "prompt_eval_count": 460,
+      "prompt_eval_duration": 703272000,
+      "eval_count": 145,
+      "eval_duration": 24629286000
+    },
+    {
+      "passo": 3,
+      "chamadas": [],
+      "done_reason": "stop",
+      "total_duration": 17250787200,
+      "load_duration": 320702000,
+      "prompt_eval_count": 751,
+      "prompt_eval_duration": 1452690000,
+      "eval_count": 91,
+      "eval_duration": 15399298000
+    }
+  ],
+  "mensagens": [
+    {
+      "role": "system",
+      "content": "Você é um assistente de aeroporto. Consulte as tools antes de responder sobre voos. Nunca invente horários, portões, destinos ou situações; use somente os dados retornados."
+    },
+    {
+      "role": "user",
+      "content": "Qual voo tem o horário programado mais cedo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para identificar qual voo possui o horário programado mais cedo, primeiro preciso listar todos os destinos disponíveis no painel do aeroporto.\n\n",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "listar_destinos",
+            "arguments": {}
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "listar_destinos",
+      "content": "[\"Recife\", \"Salvador\", \"Curitiba\", \"Fortaleza\"]"
+    },
+    {
+      "role": "assistant",
+      "content": "Agora vou consultar o horário programado de cada um dos quatro voos para comparar:\n\n",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Recife"
+            }
+          }
+        },
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Salvador"
+            }
+          }
+        },
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Curitiba"
+            }
+          }
+        },
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Fortaleza"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"horario\": \"14:20\", \"portao\": \"A12\", \"situacao\": \"No horário\"}"
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"horario\": \"13:50\", \"portao\": \"B03\", \"situacao\": \"Atrasado\"}"
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"horario\": \"15:10\", \"portao\": \"C07\", \"situacao\": \"Embarque\"}"
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"horario\": \"16:40\", \"portao\": \"A08\", \"situacao\": \"Cancelado\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "O voo com o horário programado mais cedo é o de **Salvador**, às **13:50** (Portão B03, situação: Atrasado).\n\nComparação dos horários:\n- Salvador: 13:50 ✅ (mais cedo)\n- Recife: 14:20\n- Curitiba: 15:10\n- Fortaleza: 16:40"
+    }
+  ],
+  "status": "resposta_final",
+  "resposta": "O voo com o horário programado mais cedo é o de **Salvador**, às **13:50** (Portão B03, situação: Atrasado).\n\nComparação dos horários:\n- Salvador: 13:50 ✅ (mais cedo)\n- Recife: 14:20\n- Curitiba: 15:10\n- Fortaleza: 16:40",
+  "total_passos": 3,
+  "total_chamadas": 5,
+  "duracao_segundos": 51.02,
+  "finalizado_em": "2026-09-15T18:50:21.045514-03:00",
+  "evidencias_suficientes": true,
+  "avaliacao_manual": {
+    "resposta_correta": null,
+    "inventou_dados": null,
+    "observacoes": ""
+  }
+}

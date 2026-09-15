@@ -1,0 +1,302 @@
+{
+  "lote": "20260915-184807-144856",
+  "pergunta_id": "pergunta03",
+  "caso": "descricao_vaga",
+  "resposta_esperada": "Salvador, às 13:50, portão B03, atrasado.",
+  "digest_modelo": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+  "iniciado_em": "2026-09-15T18:55:05.919322-03:00",
+  "modelo": "gpt-oss:20b",
+  "pergunta": "Qual voo tem o horário programado mais cedo?",
+  "max_passos": 6,
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_predict": 1024,
+    "num_ctx": 8192
+  },
+  "think": "low",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "listar_destinos",
+        "description": "Lista os destinos dos voos exibidos no painel do aeroporto.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "consultar_voo",
+        "description": "faz uma consulta",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "destino": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "destino"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "passos": [
+    {
+      "passo": 1,
+      "chamadas": [
+        {
+          "nome": "listar_destinos",
+          "argumentos": {},
+          "resultado": [
+            "Recife",
+            "Salvador",
+            "Curitiba",
+            "Fortaleza"
+          ]
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 1664765500,
+      "load_duration": 398372600,
+      "prompt_eval_count": 192,
+      "prompt_eval_duration": 113701000,
+      "eval_count": 103,
+      "eval_duration": 1117020000
+    },
+    {
+      "passo": 2,
+      "chamadas": [
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Recife"
+          },
+          "resultado": {
+            "horario": "14:20",
+            "portao": "A12",
+            "situacao": "No horário"
+          }
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 1001083000,
+      "load_duration": 350111000,
+      "prompt_eval_count": 325,
+      "prompt_eval_duration": 93103000,
+      "eval_count": 50,
+      "eval_duration": 546795000
+    },
+    {
+      "passo": 3,
+      "chamadas": [
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Salvador"
+          },
+          "resultado": {
+            "horario": "13:50",
+            "portao": "B03",
+            "situacao": "Atrasado"
+          }
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 827084100,
+      "load_duration": 353212800,
+      "prompt_eval_count": 413,
+      "prompt_eval_duration": 96716000,
+      "eval_count": 33,
+      "eval_duration": 366013000
+    },
+    {
+      "passo": 4,
+      "chamadas": [
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Curitiba"
+          },
+          "resultado": {
+            "horario": "15:10",
+            "portao": "C07",
+            "situacao": "Embarque"
+          }
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 815791500,
+      "load_duration": 374696300,
+      "prompt_eval_count": 485,
+      "prompt_eval_duration": 103531000,
+      "eval_count": 30,
+      "eval_duration": 326034000
+    },
+    {
+      "passo": 5,
+      "chamadas": [
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Fortaleza"
+          },
+          "resultado": {
+            "horario": "16:40",
+            "portao": "A08",
+            "situacao": "Cancelado"
+          }
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 859041700,
+      "load_duration": 425392700,
+      "prompt_eval_count": 554,
+      "prompt_eval_duration": 99699000,
+      "eval_count": 30,
+      "eval_duration": 316234000
+    },
+    {
+      "passo": 6,
+      "chamadas": [],
+      "done_reason": "stop",
+      "total_duration": 807802600,
+      "load_duration": 344957800,
+      "prompt_eval_count": 622,
+      "prompt_eval_duration": 98675000,
+      "eval_count": 32,
+      "eval_duration": 350153000
+    }
+  ],
+  "mensagens": [
+    {
+      "role": "system",
+      "content": "Você é um assistente de aeroporto. Consulte as tools antes de responder sobre voos. Nunca invente horários, portões, destinos ou situações; use somente os dados retornados."
+    },
+    {
+      "role": "user",
+      "content": "Qual voo tem o horário programado mais cedo?"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "thinking": "Need to list destinations first then consult each? Probably need to call listar_destinos to get list, then find earliest. But we don't know data. We'll just call listar_destinos and then ask user for destination? Actually question: \"Qual voo tem o horário programado mais cedo?\" We need to determine from data. So call listar_destinos to get list of flights with times. Then find earliest.",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "listar_destinos",
+            "arguments": {}
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "listar_destinos",
+      "content": "[\"Recife\", \"Salvador\", \"Curitiba\", \"Fortaleza\"]"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "thinking": "We need times per destination. Ask user which? Actually we can consult each. Let's get times for each.",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Recife"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"horario\": \"14:20\", \"portao\": \"A12\", \"situacao\": \"No horário\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "thinking": "Similarly for others.",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Salvador"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"horario\": \"13:50\", \"portao\": \"B03\", \"situacao\": \"Atrasado\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "thinking": "Next.",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Curitiba"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"horario\": \"15:10\", \"portao\": \"C07\", \"situacao\": \"Embarque\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "thinking": "Next.",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Fortaleza"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"horario\": \"16:40\", \"portao\": \"A08\", \"situacao\": \"Cancelado\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "O voo com o horário programado mais cedo é o **voo para Salvador**, que está previsto às 13 h 50."
+    }
+  ],
+  "status": "resposta_final",
+  "resposta": "O voo com o horário programado mais cedo é o **voo para Salvador**, que está previsto às 13 h 50.",
+  "total_passos": 6,
+  "total_chamadas": 5,
+  "duracao_segundos": 6.003,
+  "finalizado_em": "2026-09-15T18:55:11.922716-03:00",
+  "evidencias_suficientes": true,
+  "avaliacao_manual": {
+    "resposta_correta": null,
+    "inventou_dados": null,
+    "observacoes": ""
+  }
+}

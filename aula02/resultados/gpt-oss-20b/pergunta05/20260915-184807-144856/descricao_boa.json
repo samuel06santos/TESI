@@ -1,0 +1,171 @@
+{
+  "lote": "20260915-184807-144856",
+  "pergunta_id": "pergunta05",
+  "caso": "descricao_boa",
+  "resposta_esperada": "Manaus não consta no painel; não inventar horário nem portão.",
+  "digest_modelo": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+  "iniciado_em": "2026-09-15T18:55:24.409966-03:00",
+  "modelo": "gpt-oss:20b",
+  "pergunta": "Qual é o horário e o portão do voo para Manaus?",
+  "max_passos": 6,
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_predict": 1024,
+    "num_ctx": 8192
+  },
+  "think": "low",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "listar_destinos",
+        "description": "Lista os destinos dos voos exibidos no painel do aeroporto.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "consultar_voo",
+        "description": "Retorna horário programado, portão e situação do voo para o destino informado.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "destino": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "destino"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "passos": [
+    {
+      "passo": 1,
+      "chamadas": [
+        {
+          "nome": "listar_destinos",
+          "argumentos": {},
+          "resultado": [
+            "Recife",
+            "Salvador",
+            "Curitiba",
+            "Fortaleza"
+          ]
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 942511400,
+      "load_duration": 345938300,
+      "prompt_eval_count": 209,
+      "prompt_eval_duration": 136357000,
+      "eval_count": 36,
+      "eval_duration": 399207000
+    },
+    {
+      "passo": 2,
+      "chamadas": [
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Manaus"
+          },
+          "resultado": {
+            "erro": "Destino não encontrado no painel: Manaus"
+          }
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 1016799700,
+      "load_duration": 357507900,
+      "prompt_eval_count": 275,
+      "prompt_eval_duration": 92515000,
+      "eval_count": 50,
+      "eval_duration": 558703000
+    },
+    {
+      "passo": 3,
+      "chamadas": [],
+      "done_reason": "stop",
+      "total_duration": 969574100,
+      "load_duration": 369085900,
+      "prompt_eval_count": 351,
+      "prompt_eval_duration": 94837000,
+      "eval_count": 44,
+      "eval_duration": 493730000
+    }
+  ],
+  "mensagens": [
+    {
+      "role": "system",
+      "content": "Você é um assistente de aeroporto. Consulte as tools antes de responder sobre voos. Nunca invente horários, portões, destinos ou situações; use somente os dados retornados."
+    },
+    {
+      "role": "user",
+      "content": "Qual é o horário e o portão do voo para Manaus?"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "thinking": "Need to call listar_destinos then consultar_voo for Manaus.",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "listar_destinos",
+            "arguments": {}
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "listar_destinos",
+      "content": "[\"Recife\", \"Salvador\", \"Curitiba\", \"Fortaleza\"]"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "thinking": "Now ask consultar_voo for Manaus but not in list. Should respond that no flight? Use tool.",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Manaus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"erro\": \"Destino não encontrado no painel: Manaus\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "Desculpe, mas não há nenhum voo para **Manaus** exibido no painel do aeroporto. Se precisar de informações sobre outro destino ou quiser verificar horários futuros, é só me avisar!"
+    }
+  ],
+  "status": "resposta_final",
+  "resposta": "Desculpe, mas não há nenhum voo para **Manaus** exibido no painel do aeroporto. Se precisar de informações sobre outro destino ou quiser verificar horários futuros, é só me avisar!",
+  "total_passos": 3,
+  "total_chamadas": 2,
+  "duracao_segundos": 2.944,
+  "finalizado_em": "2026-09-15T18:55:27.353722-03:00",
+  "evidencias_suficientes": true,
+  "avaliacao_manual": {
+    "resposta_correta": null,
+    "inventou_dados": null,
+    "observacoes": ""
+  }
+}

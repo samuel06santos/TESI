@@ -1,0 +1,114 @@
+﻿modelo;pergunta;caso;status;passos;chamadas_tools;duracao_segundos;carga_modelo_segundos;evidencias_suficientes;resposta_esperada;resposta;erro;arquivo
+qwen3.8:27b-iq4xs;pergunta01;descricao_boa;resposta_final;2;1;49.073;34.279;True;Recife: 14:20, portão A12, no horário.;O voo para Recife está programado para **14:20**, com embarque no portão **A12** e situação **no horário**.;;qwen3.8-27b-iq4xs/pergunta01/20260915-184807-144856/descricao_boa.json
+qwen3.8:27b-iq4xs;pergunta01;descricao_vaga;resposta_final;2;1;16.456;0.611;True;Recife: 14:20, portão A12, no horário.;"O voo para Recife está com as seguintes informações:
+
+- **Horário:** 14:20
+- **Portão:** A12
+- **Situação:** No horário";;qwen3.8-27b-iq4xs/pergunta01/20260915-184807-144856/descricao_vaga.json
+qwen3.8:27b-iq4xs;pergunta02;descricao_boa;resposta_final;2;1;8.617;0.51;True;Recife, Salvador, Curitiba e Fortaleza.;"Os destinos exibidos no painel de voos são:
+
+- Recife
+- Salvador
+- Curitiba
+- Fortaleza";;qwen3.8-27b-iq4xs/pergunta02/20260915-184807-144856/descricao_boa.json
+qwen3.8:27b-iq4xs;pergunta02;descricao_vaga;resposta_final;2;1;8.692;0.58;True;Recife, Salvador, Curitiba e Fortaleza.;"Os destinos exibidos no painel de voos são:
+
+- Recife
+- Salvador
+- Curitiba
+- Fortaleza";;qwen3.8-27b-iq4xs/pergunta02/20260915-184807-144856/descricao_vaga.json
+qwen3.8:27b-iq4xs;pergunta03;descricao_boa;resposta_final;3;5;51.02;0.901;True;Salvador, às 13:50, portão B03, atrasado.;"O voo com o horário programado mais cedo é o de **Salvador**, às **13:50** (Portão B03, situação: Atrasado).
+
+Comparação dos horários:
+- Salvador: 13:50 ✅ (mais cedo)
+- Recife: 14:20
+- Curitiba: 15:10
+- Fortaleza: 16:40";;qwen3.8-27b-iq4xs/pergunta03/20260915-184807-144856/descricao_boa.json
+qwen3.8:27b-iq4xs;pergunta03;descricao_vaga;resposta_final;3;5;52.864;0.863;True;Salvador, às 13:50, portão B03, atrasado.;"Com base nos dados consultados, os horários programados são:
+
+*   **Salvador:** 13:50
+*   **Recife:** 14:20
+*   **Curitiba:** 15:10
+*   **Fortaleza:** 16:40
+
+O voo com o horário programado mais cedo é o de **Salvador**, às **13:50**.";;qwen3.8-27b-iq4xs/pergunta03/20260915-184807-144856/descricao_vaga.json
+qwen3.8:27b-iq4xs;pergunta04;descricao_boa;resposta_final;3;5;63.384;0.753;True;Salvador (atrasado), Curitiba (embarque) e Fortaleza (cancelado).;"Com base nas consultas, os voos que **não** estão com a situação ""No horário"" são:
+
+| Destino | Horário Programado | Portão | Situação |
+| :--- | :--- | :--- | :--- |
+| **Salvador** | 13:50 | B03 | Atrasado |
+| **Curitiba** | 15:10 | C07 | Embarque |
+| **Fortaleza** | 16:40 | A08 | Cancelado |
+
+O voo para **Recife** (14:20, Portão A12) é o único que está ""No horário"".";;qwen3.8-27b-iq4xs/pergunta04/20260915-184807-144856/descricao_boa.json
+qwen3.8:27b-iq4xs;pergunta04;descricao_vaga;resposta_final;3;5;63.895;0.857;True;Salvador (atrasado), Curitiba (embarque) e Fortaleza (cancelado).;"Com base nas consultas, os voos que **não** estão com a situação ""No horário"" são:
+
+1.  **Salvador**: Situação **Atrasado** (Horário previsto: 13:50, Portão B03)
+2.  **Curitiba**: Situação **Embarque** (Horário previsto: 15:10, Portão C07)
+3.  **Fortaleza**: Situação **Cancelado** (Horário previsto: 16:40, Portão A08)
+
+O voo para **Recife** é o único que está ""No horário"".";;qwen3.8-27b-iq4xs/pergunta04/20260915-184807-144856/descricao_vaga.json
+qwen3.8:27b-iq4xs;pergunta05;descricao_boa;resposta_final;2;1;13.898;0.504;True;"Manaus não consta no painel; não inventar horário nem portão.";"Não encontrei um voo para **Manaus** no painel do aeroporto. 
+
+Para eu poder ajudar, posso listar os destinos disponíveis? Deseja que eu faça isso?";;qwen3.8-27b-iq4xs/pergunta05/20260915-184807-144856/descricao_boa.json
+qwen3.8:27b-iq4xs;pergunta05;descricao_vaga;resposta_final;2;1;16.024;0.582;True;"Manaus não consta no painel; não inventar horário nem portão.";"Não encontrei nenhum voo para **Manaus** no painel do aeroporto no momento. O sistema retornou que o destino não está listado.
+
+Se quiser, posso listar os destinos disponíveis no painel para você verificar as opções. Deseja?";;qwen3.8-27b-iq4xs/pergunta05/20260915-184807-144856/descricao_vaga.json
+gemma4:latest;pergunta01;descricao_boa;resposta_final;2;1;19.048;18.197;True;Recife: 14:20, portão A12, no horário.;"O voo para Recife tem horário programado para as 14:20, no portão A12 e está com a situação ""No horário"".";;gemma4-latest/pergunta01/20260915-184807-144856/descricao_boa.json
+gemma4:latest;pergunta01;descricao_vaga;resposta_final;2;1;1.634;0.862;True;Recife: 14:20, portão A12, no horário.;O voo para Recife está previsto para as **14:20**, no portão **A12** e a situação é **No horário**.;;gemma4-latest/pergunta01/20260915-184807-144856/descricao_vaga.json
+gemma4:latest;pergunta02;descricao_boa;resposta_final;2;1;1.491;0.907;True;Recife, Salvador, Curitiba e Fortaleza.;Os destinos que aparecem no painel de voos são: Recife, Salvador, Curitiba e Fortaleza.;;gemma4-latest/pergunta02/20260915-184807-144856/descricao_boa.json
+gemma4:latest;pergunta02;descricao_vaga;resposta_final;2;1;1.373;0.815;True;Recife, Salvador, Curitiba e Fortaleza.;Os destinos que aparecem no painel de voos são: Recife, Salvador, Curitiba e Fortaleza.;;gemma4-latest/pergunta02/20260915-184807-144856/descricao_vaga.json
+gemma4:latest;pergunta03;descricao_boa;resposta_final;1;0;1.279;0.541;False;Salvador, às 13:50, portão B03, atrasado.;Para saber qual voo tem o horário programado mais cedo, preciso que você me diga para qual destino gostaria de consultar os voos. Você pode usar a ferramenta `listar_destinos` se não souber quais destinos estão disponíveis.;;gemma4-latest/pergunta03/20260915-184807-144856/descricao_boa.json
+gemma4:latest;pergunta03;descricao_vaga;resposta_final;1;0;1.123;0.429;False;Salvador, às 13:50, portão B03, atrasado.;Para saber qual voo tem o horário programado mais cedo, preciso que você me diga para qual destino gostaria de consultar os voos. Você pode usar a ferramenta `listar_destinos` se não souber quais destinos estão disponíveis.;;gemma4-latest/pergunta03/20260915-184807-144856/descricao_vaga.json
+gemma4:latest;pergunta04;descricao_boa;resposta_final;1;0;1.298;0.539;False;Salvador (atrasado), Curitiba (embarque) e Fortaleza (cancelado).;"Para verificar quais voos não estão com a situação ""No horário"", preciso saber qual destino você gostaria de consultar. Você pode me dizer o nome do destino?
+
+Se quiser ver todos os destinos disponíveis, posso usar a ferramenta `listar_destinos`.";;gemma4-latest/pergunta04/20260915-184807-144856/descricao_boa.json
+gemma4:latest;pergunta04;descricao_vaga;resposta_final;1;0;1.136;0.408;False;Salvador (atrasado), Curitiba (embarque) e Fortaleza (cancelado).;"Para verificar quais voos não estão com a situação ""No horário"", preciso saber qual destino você gostaria de consultar. Você pode me dizer o destino?
+
+Se quiser ver todos os destinos disponíveis, posso usar a ferramenta `listar_destinos`.";;gemma4-latest/pergunta04/20260915-184807-144856/descricao_vaga.json
+gemma4:latest;pergunta05;descricao_boa;resposta_final;2;1;1.628;0.938;True;"Manaus não consta no painel; não inventar horário nem portão.";Não encontrei informações sobre um voo para Manaus no momento. Você gostaria de verificar algum outro destino?;;gemma4-latest/pergunta05/20260915-184807-144856/descricao_boa.json
+gemma4:latest;pergunta05;descricao_vaga;resposta_final;2;1;1.628;0.97;True;"Manaus não consta no painel; não inventar horário nem portão.";Não encontrei informações sobre um voo para Manaus no momento. Você gostaria de verificar algum outro destino?;;gemma4-latest/pergunta05/20260915-184807-144856/descricao_vaga.json
+gpt-oss:20b;pergunta01;descricao_boa;resposta_final;3;2;31.551;29.653;True;Recife: 14:20, portão A12, no horário.;"**Voo para Recife**
+
+- **Horário programado:** 14:20  
+- **Portão:** A12  
+- **Situação:** No horário";;gpt-oss-20b/pergunta01/20260915-184807-144856/descricao_boa.json
+gpt-oss:20b;pergunta01;descricao_vaga;resposta_final;3;2;2.62;1.14;True;Recife: 14:20, portão A12, no horário.;"**Voo para Recife**
+
+- **Horário:** 14:20  
+- **Portão:** A12  
+- **Situação:** No horário";;gpt-oss-20b/pergunta01/20260915-184807-144856/descricao_vaga.json
+gpt-oss:20b;pergunta02;descricao_boa;resposta_final;2;1;1.837;0.956;True;Recife, Salvador, Curitiba e Fortaleza.;"Os destinos exibidos no painel de voos são:
+
+- Recife  
+- Salvador  
+- Curitiba  
+- Fortaleza";;gpt-oss-20b/pergunta02/20260915-184807-144856/descricao_boa.json
+gpt-oss:20b;pergunta02;descricao_vaga;resposta_final;2;1;1.57;0.725;True;Recife, Salvador, Curitiba e Fortaleza.;"Os destinos exibidos no painel de voos são:
+
+- Recife  
+- Salvador  
+- Curitiba  
+- Fortaleza";;gpt-oss-20b/pergunta02/20260915-184807-144856/descricao_vaga.json
+gpt-oss:20b;pergunta03;descricao_boa;resposta_final;6;5;5.443;2.39;True;Salvador, às 13:50, portão B03, atrasado.;O voo com o horário programado mais cedo é o que parte para **Salvador** às 13:50.;;gpt-oss-20b/pergunta03/20260915-184807-144856/descricao_boa.json
+gpt-oss:20b;pergunta03;descricao_vaga;resposta_final;6;5;6.003;2.247;True;Salvador, às 13:50, portão B03, atrasado.;O voo com o horário programado mais cedo é o **voo para Salvador**, que está previsto às 13 h 50.;;gpt-oss-20b/pergunta03/20260915-184807-144856/descricao_vaga.json
+gpt-oss:20b;pergunta04;descricao_boa;resposta_final;6;5;5.833;2.306;True;Salvador (atrasado), Curitiba (embarque) e Fortaleza (cancelado).;"Os voos que **não** estão com a situação “No horário” são:
+
+| Destino | Horário programado | Portão | Situação |
+|---------|--------------------|--------|----------|
+| Salvador | 13:50 | B03 | Atrasado |
+| Curitiba | 15:10 | C07 | Embarque |
+| Fortaleza | 16:40 | A08 | Cancelado |
+
+O voo para Recife permanece “No horário”.";;gpt-oss-20b/pergunta04/20260915-184807-144856/descricao_boa.json
+gpt-oss:20b;pergunta04;descricao_vaga;resposta_final;6;5;6.637;2.623;True;Salvador (atrasado), Curitiba (embarque) e Fortaleza (cancelado).;"Os voos que **não** estão com a situação “No horário” são:
+
+| Destino | Horário | Portão | Situação |
+|---------|---------|--------|----------|
+| Salvador | 13:50 | B03 | Atrasado |
+| Curitiba | 15:10 | C07 | Embarque |
+| Fortaleza | 16:40 | A08 | Cancelado |
+
+Esses são os únicos voos cujo status não indica que estão “No horário”.";;gpt-oss-20b/pergunta04/20260915-184807-144856/descricao_vaga.json
+gpt-oss:20b;pergunta05;descricao_boa;resposta_final;3;2;2.944;1.073;True;"Manaus não consta no painel; não inventar horário nem portão.";Desculpe, mas não há nenhum voo para **Manaus** exibido no painel do aeroporto. Se precisar de informações sobre outro destino ou quiser verificar horários futuros, é só me avisar!;;gpt-oss-20b/pergunta05/20260915-184807-144856/descricao_boa.json
+gpt-oss:20b;pergunta05;descricao_vaga;resposta_final;3;2;2.8;1.195;True;"Manaus não consta no painel; não inventar horário nem portão.";Desculpe, mas o voo para **Manaus** não está exibido no painel do aeroporto. Se precisar de informações sobre outro destino ou quiser verificar outra rota, estou à disposição!;;gpt-oss-20b/pergunta05/20260915-184807-144856/descricao_vaga.json

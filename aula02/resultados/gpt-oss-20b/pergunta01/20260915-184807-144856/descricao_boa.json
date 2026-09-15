@@ -1,0 +1,173 @@
+{
+  "lote": "20260915-184807-144856",
+  "pergunta_id": "pergunta01",
+  "caso": "descricao_boa",
+  "resposta_esperada": "Recife: 14:20, portão A12, no horário.",
+  "digest_modelo": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+  "iniciado_em": "2026-09-15T18:54:22.853171-03:00",
+  "modelo": "gpt-oss:20b",
+  "pergunta": "Qual é o horário, o portão e a situação do voo para Recife?",
+  "max_passos": 6,
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_predict": 1024,
+    "num_ctx": 8192
+  },
+  "think": "low",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "listar_destinos",
+        "description": "Lista os destinos dos voos exibidos no painel do aeroporto.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "consultar_voo",
+        "description": "Retorna horário programado, portão e situação do voo para o destino informado.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "destino": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "destino"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "passos": [
+    {
+      "passo": 1,
+      "chamadas": [
+        {
+          "nome": "listar_destinos",
+          "argumentos": {},
+          "resultado": [
+            "Recife",
+            "Salvador",
+            "Curitiba",
+            "Fortaleza"
+          ]
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 29612863600,
+      "load_duration": 28787287000,
+      "prompt_eval_count": 211,
+      "prompt_eval_duration": 360334000,
+      "eval_count": 38,
+      "eval_duration": 417645000
+    },
+    {
+      "passo": 2,
+      "chamadas": [
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Recife"
+          },
+          "resultado": {
+            "horario": "14:20",
+            "portao": "A12",
+            "situacao": "No horário"
+          }
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 901633700,
+      "load_duration": 419755400,
+      "prompt_eval_count": 279,
+      "prompt_eval_duration": 98029000,
+      "eval_count": 34,
+      "eval_duration": 371580000
+    },
+    {
+      "passo": 3,
+      "chamadas": [],
+      "done_reason": "stop",
+      "total_duration": 966126800,
+      "load_duration": 446138200,
+      "prompt_eval_count": 351,
+      "prompt_eval_duration": 102982000,
+      "eval_count": 37,
+      "eval_duration": 404390000
+    }
+  ],
+  "mensagens": [
+    {
+      "role": "system",
+      "content": "Você é um assistente de aeroporto. Consulte as tools antes de responder sobre voos. Nunca invente horários, portões, destinos ou situações; use somente os dados retornados."
+    },
+    {
+      "role": "user",
+      "content": "Qual é o horário, o portão e a situação do voo para Recife?"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "thinking": "Need to call listar_destinos then consultar_voo with destino \"Recife\".",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "listar_destinos",
+            "arguments": {}
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "listar_destinos",
+      "content": "[\"Recife\", \"Salvador\", \"Curitiba\", \"Fortaleza\"]"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "thinking": "Now call consultar_voo.",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Recife"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"horario\": \"14:20\", \"portao\": \"A12\", \"situacao\": \"No horário\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "**Voo para Recife**\n\n- **Horário programado:** 14:20  \n- **Portão:** A12  \n- **Situação:** No horário"
+    }
+  ],
+  "status": "resposta_final",
+  "resposta": "**Voo para Recife**\n\n- **Horário programado:** 14:20  \n- **Portão:** A12  \n- **Situação:** No horário",
+  "total_passos": 3,
+  "total_chamadas": 2,
+  "duracao_segundos": 31.551,
+  "finalizado_em": "2026-09-15T18:54:54.404772-03:00",
+  "evidencias_suficientes": true,
+  "avaliacao_manual": {
+    "resposta_correta": null,
+    "inventou_dados": null,
+    "observacoes": ""
+  }
+}

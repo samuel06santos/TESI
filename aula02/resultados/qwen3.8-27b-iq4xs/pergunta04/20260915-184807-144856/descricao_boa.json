@@ -1,0 +1,243 @@
+{
+  "lote": "20260915-184807-144856",
+  "pergunta_id": "pergunta04",
+  "caso": "descricao_boa",
+  "resposta_esperada": "Salvador (atrasado), Curitiba (embarque) e Fortaleza (cancelado).",
+  "digest_modelo": "3eb1e9cf27b5edeeb3d000a8c9284075a14fa5b4ff31e16195a573ca2d4daa7a",
+  "iniciado_em": "2026-09-15T18:51:13.922470-03:00",
+  "modelo": "qwen3.8:27b-iq4xs",
+  "pergunta": "Quais voos não estão com a situação 'No horário'?",
+  "max_passos": 6,
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_predict": 1024,
+    "num_ctx": 8192
+  },
+  "think": false,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "listar_destinos",
+        "description": "Lista os destinos dos voos exibidos no painel do aeroporto.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "consultar_voo",
+        "description": "Retorna horário programado, portão e situação do voo para o destino informado.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "destino": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "destino"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "passos": [
+    {
+      "passo": 1,
+      "chamadas": [
+        {
+          "nome": "listar_destinos",
+          "argumentos": {},
+          "resultado": [
+            "Recife",
+            "Salvador",
+            "Curitiba",
+            "Fortaleza"
+          ]
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 11603913300,
+      "load_duration": 248090200,
+      "prompt_eval_count": 386,
+      "prompt_eval_duration": 621490000,
+      "eval_count": 61,
+      "eval_duration": 10247546000
+    },
+    {
+      "passo": 2,
+      "chamadas": [
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Recife"
+          },
+          "resultado": {
+            "horario": "14:20",
+            "portao": "A12",
+            "situacao": "No horário"
+          }
+        },
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Salvador"
+          },
+          "resultado": {
+            "horario": "13:50",
+            "portao": "B03",
+            "situacao": "Atrasado"
+          }
+        },
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Curitiba"
+          },
+          "resultado": {
+            "horario": "15:10",
+            "portao": "C07",
+            "situacao": "Embarque"
+          }
+        },
+        {
+          "nome": "consultar_voo",
+          "argumentos": {
+            "destino": "Fortaleza"
+          },
+          "resultado": {
+            "horario": "16:40",
+            "portao": "A08",
+            "situacao": "Cancelado"
+          }
+        }
+      ],
+      "done_reason": "stop",
+      "total_duration": 24828379100,
+      "load_duration": 260164500,
+      "prompt_eval_count": 481,
+      "prompt_eval_duration": 696957000,
+      "eval_count": 141,
+      "eval_duration": 23799869000
+    },
+    {
+      "passo": 3,
+      "chamadas": [],
+      "done_reason": "stop",
+      "total_duration": 26940224900,
+      "load_duration": 244662200,
+      "prompt_eval_count": 768,
+      "prompt_eval_duration": 1409356000,
+      "eval_count": 149,
+      "eval_duration": 25227877000
+    }
+  ],
+  "mensagens": [
+    {
+      "role": "system",
+      "content": "Você é um assistente de aeroporto. Consulte as tools antes de responder sobre voos. Nunca invente horários, portões, destinos ou situações; use somente os dados retornados."
+    },
+    {
+      "role": "user",
+      "content": "Quais voos não estão com a situação 'No horário'?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para identificar quais voos **não** estão \"No horário\", primeiro preciso listar todos os destinos disponíveis no painel e, em seguida, consultar o status de cada um deles.\n\nVou começar listando os destinos:\n\n",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "listar_destinos",
+            "arguments": {}
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "listar_destinos",
+      "content": "[\"Recife\", \"Salvador\", \"Curitiba\", \"Fortaleza\"]"
+    },
+    {
+      "role": "assistant",
+      "content": "Agora vou consultar a situação de cada um dos quatro voos:\n\n",
+      "tool_calls": [
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Recife"
+            }
+          }
+        },
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Salvador"
+            }
+          }
+        },
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Curitiba"
+            }
+          }
+        },
+        {
+          "function": {
+            "name": "consultar_voo",
+            "arguments": {
+              "destino": "Fortaleza"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"horario\": \"14:20\", \"portao\": \"A12\", \"situacao\": \"No horário\"}"
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"horario\": \"13:50\", \"portao\": \"B03\", \"situacao\": \"Atrasado\"}"
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"horario\": \"15:10\", \"portao\": \"C07\", \"situacao\": \"Embarque\"}"
+    },
+    {
+      "role": "tool",
+      "tool_name": "consultar_voo",
+      "content": "{\"horario\": \"16:40\", \"portao\": \"A08\", \"situacao\": \"Cancelado\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "Com base nas consultas, os voos que **não** estão com a situação \"No horário\" são:\n\n| Destino | Horário Programado | Portão | Situação |\n| :--- | :--- | :--- | :--- |\n| **Salvador** | 13:50 | B03 | Atrasado |\n| **Curitiba** | 15:10 | C07 | Embarque |\n| **Fortaleza** | 16:40 | A08 | Cancelado |\n\nO voo para **Recife** (14:20, Portão A12) é o único que está \"No horário\"."
+    }
+  ],
+  "status": "resposta_final",
+  "resposta": "Com base nas consultas, os voos que **não** estão com a situação \"No horário\" são:\n\n| Destino | Horário Programado | Portão | Situação |\n| :--- | :--- | :--- | :--- |\n| **Salvador** | 13:50 | B03 | Atrasado |\n| **Curitiba** | 15:10 | C07 | Embarque |\n| **Fortaleza** | 16:40 | A08 | Cancelado |\n\nO voo para **Recife** (14:20, Portão A12) é o único que está \"No horário\".",
+  "total_passos": 3,
+  "total_chamadas": 5,
+  "duracao_segundos": 63.384,
+  "finalizado_em": "2026-09-15T18:52:17.306748-03:00",
+  "evidencias_suficientes": true,
+  "avaliacao_manual": {
+    "resposta_correta": null,
+    "inventou_dados": null,
+    "observacoes": ""
+  }
+}
