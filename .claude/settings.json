@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__estilo_marcado__listar_filiais",
+      "mcp__estilo_marcado__listar_servicos",
+      "mcp__estilo_marcado__consultar_horarios"
+    ],
+    "ask": [
+      "mcp__estilo_marcado__criar_agendamento"
+    ]
+  }
+}

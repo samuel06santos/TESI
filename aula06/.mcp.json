@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "estilo_marcado": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "run",
+        "--project",
+        "${CLAUDE_PROJECT_DIR:-.}/aula06",
+        "python",
+        "${CLAUDE_PROJECT_DIR:-.}/aula06/server.py"
+      ]
+    }
+  }
+}
